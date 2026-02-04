@@ -1,0 +1,67 @@
+\documentclass[a4paper,11pt]{article}
+
+% Packages
+\usepackage[dutch]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{array}
+\usepackage{longtable}
+
+% Voor invulbare PDF formulieren
+\usepackage{hyperref}
+
+% Pagina instellingen
+\geometry{
+    a4paper,
+    left=2.5cm,
+    right=2.5cm,
+    top=3cm,
+    bottom=3cm
+}
+
+% Header en footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textbf{EAS DataLab - Project Intake}}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{\small HR-DataLab-EAS | November 2025}
+
+% Kleuren
+\definecolor{hrblue}{RGB}{204,0,0}
+\definecolor{hrgray}{RGB}{100,100,100}
+
+% Hyperref instellingen voor invulbare formulieren
+\hypersetup{
+    colorlinks=true,
+    linkcolor=hrblue,
+    urlcolor=hrblue,
+    pdftitle={EAS DataLab Project Intake Formulier},
+    pdfauthor={HR-DataLab-EAS},
+    pdfsubject={Project Intake},
+    pdfkeywords={intake, project, datalab},
+    pdfborder={0 0 0}
+}
+
+% Titels styling
+\titleformat{\section}{\Large\bfseries\color{hrblue}}{\thesection}{1em}{}[\titlerule]
+\titleformat{\subsection}{\large\bfseries\color{hrgray}}{\thesubsection}{1em}{}
+
+% Custom commands voor invulvelden
+\newcommand{\textfield}[2]{\TextField[name=#1, width=#2, bordercolor={0 0 0}, backgroundcolor={0.95 0.95 0.95}]{}}
+\newcommand{\textfieldmultiline}[3]{\TextField[name=#1, width=#2, height=#3, multiline=true, bordercolor={0 0 0}, backgroundcolor={0.95 0.95 0.95}]{}}
+\newcommand{\checkbox}[1]{\CheckBox[name=#1, width=0.4cm, height=0.4cm, bordercolor={0 0 0}]{}}
+
+% Document begin
+\begin{document}
+
+% Include de content
+\input{intake_content}
+
+\end{document}

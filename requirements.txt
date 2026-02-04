@@ -1,0 +1,21 @@
+# Python dependencies voor Intake-projecten
+# Installeer met: pip install -r requirements.txt
+
+# Voor image editing (edit_image.py)
+pillow>=10.0.0
+
+# Voor interactieve terminal menus (select_project.py)
+readchar>=4.0.0
+
+# Voor Excel bestanden lezen (forms reader)
+pandas>=2.0.0
+openpyxl>=3.0.0
+
+# Voor markdown naar HTML conversie
+markdown>=3.4.0
+
+# Voor markdown naar PDF conversie
+markdown-pdf>=1.0.0
+
+# Voor executable building (optioneel)
+pyinstaller>=6.0.0

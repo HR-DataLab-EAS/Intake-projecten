@@ -1,0 +1,78 @@
+# LaTeX hulpbestanden
+*.aux
+*.log
+*.out
+*.toc
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.synctex.gz(busy)
+*.nav
+*.snm
+*.vrb
+
+# macOS
+.DS_Store
+
+# Editor bestanden
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+local/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.spec
+
+# Virtual Environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+.env/
+.python-version
+pyvenv.cfg
+
+# PyInstaller
+*.manifest
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+pytestdebug.log
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# pyenv
+.python-version
+
+# Compiled PDF (optioneel - uncomment als je de PDF niet wilt committen)
+# INTAKE_FORMULIER.pdf

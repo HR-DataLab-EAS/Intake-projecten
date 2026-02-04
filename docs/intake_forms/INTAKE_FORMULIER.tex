@@ -1,0 +1,443 @@
+\documentclass[a4paper,11pt]{article}
+
+% Packages
+\usepackage[dutch]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{array}
+\usepackage{longtable}
+
+% Voor invulbare PDF formulieren
+\usepackage{hyperref}
+
+% Pagina instellingen
+\geometry{
+    a4paper,
+    left=2.5cm,
+    right=2.5cm,
+    top=3cm,
+    bottom=3cm
+}
+
+% Header en footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textbf{EAS DataLab - Project Intake}}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{\small HR-DataLab-EAS | November 2025}
+
+% Kleuren
+\definecolor{hrblue}{RGB}{204,0,0}
+\definecolor{hrgray}{RGB}{100,100,100}
+
+% Hyperref instellingen voor invulbare formulieren
+\hypersetup{
+    colorlinks=true,
+    linkcolor=hrblue,
+    urlcolor=hrblue,
+    pdftitle={EAS DataLab Project Intake Formulier},
+    pdfauthor={HR-DataLab-EAS},
+    pdfsubject={Project Intake},
+    pdfkeywords={intake, project, datalab},
+    pdfborder={0 0 0}
+}
+
+% Titels styling
+\titleformat{\section}{\Large\bfseries\color{hrblue}}{\thesection}{1em}{}[\titlerule]
+\titleformat{\subsection}{\large\bfseries\color{hrgray}}{\thesubsection}{1em}{}
+
+% Custom commands voor invulvelden
+\newcommand{\textfield}[2]{\TextField[name=#1, width=#2, bordercolor={0 0 0}, backgroundcolor={0.95 0.95 0.95}]{}}
+\newcommand{\textfieldmultiline}[3]{\TextField[name=#1, width=#2, height=#3, multiline=true, bordercolor={0 0 0}, backgroundcolor={0.95 0.95 0.95}]{}}
+\newcommand{\checkbox}[1]{\CheckBox[name=#1, width=0.4cm, height=0.4cm, bordercolor={0 0 0}]{}}
+
+% Document begin
+\begin{document}
+
+% Titel pagina
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+    
+    {\Huge\bfseries\color{hrblue} Project Intake Formulier\par}
+    \vspace{0.5cm}
+    {\Large EAS DataLab\par}
+    \vspace{2cm}
+    
+    {\Large Hogeschool Rotterdam\par}
+    \vspace{3cm}
+    
+    % \includegraphics[width=0.3\textwidth]{hr-logo.png}
+    % \vspace{2cm}
+    
+    {\large\textit{Bedankt voor je interesse om je project aan te melden bij de EAS DataLab!}\par}
+    \vspace{1cm}
+    
+    {\normalsize Vul dit formulier zo compleet mogelijk in. Hoe meer informatie je verstrekt, hoe beter we je project kunnen beoordelen en ondersteunen. Velden gemarkeerd met * zijn verplicht.\par}
+    
+    \vfill
+    
+    {\small November 2025\par}
+\end{titlepage}
+
+% Begin formulier
+\begin{Form}
+
+\section{Algemene Projectinformatie}
+
+\subsection*{Projectnaam *}
+\textit{Geef je project een duidelijke, beschrijvende naam}
+
+\noindent\textfield{projectnaam}{\textwidth}
+
+\vspace{0.5cm}
+
+\subsection*{Korte Beschrijving (max 3 zinnen) *}
+\textit{Wat is het project in een notendop?}
+
+\noindent\textfieldmultiline{korte_beschrijving}{\textwidth}{3cm}
+
+\vspace{0.5cm}
+
+\subsection*{Uitgebreide Projectbeschrijving *}
+\textit{Beschrijf het project in detail: wat ga je doen, waarom, en wat is het beoogde resultaat?}
+
+\noindent\textfieldmultiline{uitgebreide_beschrijving}{\textwidth}{6cm}
+
+\vspace{1cm}
+
+\section{Contactinformatie}
+
+\subsection*{Projectinitiatiefnemer *}
+\textit{Naam van de persoon die dit project indient}
+
+\vspace{0.3cm}
+\noindent\textbf{Naam:} \textfield{init_naam}{12cm}
+
+\vspace{0.3cm}
+\noindent\textbf{Functie:} \textfield{init_functie}{12cm}
+
+\vspace{0.3cm}
+\noindent\textbf{Afdeling/Faculteit:} \textfield{init_afdeling}{12cm}
+
+\vspace{0.3cm}
+\noindent\textbf{Email:} \textfield{init_email}{12cm}
+
+\vspace{0.3cm}
+\noindent\textbf{Telefoonnummer:} \textfield{init_telefoon}{12cm}
+
+\vspace{0.5cm}
+
+\subsection*{Opdrachtgever/Sponsor *}
+\textit{Wie is verantwoordelijk voor dit project vanuit het project?}
+
+\vspace{0.3cm}
+\noindent\textbf{Naam:} \textfield{sponsor_naam}{12cm}
+
+\vspace{0.3cm}
+\noindent\textbf{Functie:} \textfield{sponsor_functie}{12cm}
+
+\vspace{0.3cm}
+\noindent\textbf{Afdeling/Faculteit:} \textfield{sponsor_afdeling}{12cm}
+
+\vspace{0.3cm}
+\noindent\textbf{Email:} \textfield{sponsor_email}{12cm}
+
+\vspace{0.5cm}
+
+\subsection*{Projectteam}
+\textit{Wie zijn er verder bij het project betrokken?}
+
+\vspace{0.3cm}
+\noindent\textbf{Teamlid 1:} \textfield{team1}{12cm}
+
+\vspace{0.3cm}
+\noindent\textbf{Teamlid 2:} \textfield{team2}{12cm}
+
+\vspace{0.3cm}
+\noindent\textbf{Teamlid 3:} \textfield{team3}{12cm}
+
+\vspace{0.3cm}
+\noindent\textbf{Teamlid 4:} \textfield{team4}{12cm}
+
+\vspace{0.3cm}
+\noindent\textbf{Teamlid 5:} \textfield{team5}{12cm}
+
+\newpage
+
+\section{Projectdoelen en Scope}
+
+\subsection*{Hoofddoel van het Project *}
+\textit{Wat is het primaire doel dat je wilt bereiken?}
+
+\noindent\textfieldmultiline{hoofddoel}{\textwidth}{4cm}
+
+\vspace{0.5cm}
+
+\subsection*{Specifieke Doelstellingen *}
+\textit{Wat zijn de doelstellingen?}
+
+\vspace{0.3cm}
+\noindent\textbf{1.} \textfield{doelstelling1}{\textwidth}
+
+\vspace{0.3cm}
+\noindent\textbf{2.} \textfield{doelstelling2}{\textwidth}
+
+\vspace{0.3cm}
+\noindent\textbf{3.} \textfield{doelstelling3}{\textwidth}
+
+\vspace{0.5cm}
+
+\subsection*{Succes Criteria *}
+\textit{Waaraan kunnen we zien dat het project geslaagd is?}
+
+\noindent\textfieldmultiline{succes_criteria}{\textwidth}{4cm}
+
+\vspace{0.5cm}
+
+\subsection*{Scope}
+\textit{Wat valt wel en niet binnen het project?}
+
+\vspace{0.3cm}
+\noindent\textbf{Binnen scope:}
+
+\noindent\textfieldmultiline{binnen_scope}{\textwidth}{3cm}
+
+\vspace{0.3cm}
+\noindent\textbf{Buiten scope:}
+
+\noindent\textfieldmultiline{buiten_scope}{\textwidth}{3cm}
+
+\newpage
+
+
+\section{Technische Informatie}
+
+\subsection*{Type Project *}
+\textit{Selecteer wat van toepassing is (meerdere mogelijk)}
+
+\vspace{0.3cm}
+\noindent\checkbox{type_data_analyse} Data Analyse \hspace{1cm}
+\checkbox{type_ml} Machine Learning / AI
+
+\vspace{0.2cm}
+\noindent\checkbox{type_dashboard} Dashboard / Visualisatie \hspace{1cm}
+\checkbox{type_pipeline} Data Pipeline / ETL
+
+\vspace{0.2cm}
+\noindent\checkbox{type_web} Web Applicatie \hspace{1cm}
+\checkbox{type_api} API Development
+
+\vspace{0.2cm}
+\noindent\checkbox{type_database} Database Ontwikkeling \hspace{1cm}
+\checkbox{type_onderzoek} Onderzoek / Proof of Concept
+
+\vspace{0.2cm}
+\noindent\checkbox{type_anders} Anders, namelijk: \textfield{type_anders_tekst}{8cm}
+
+\vspace{0.5cm}
+
+\subsection*{Gebruikte Technologie Stack}
+\textit{Welke technologieën worden in het project gebruikt?}
+
+\vspace{0.3cm}
+\noindent\textbf{Programmeertalen:}
+
+\noindent\textfield{programmeertalen}{\textwidth}
+
+\vspace{0.3cm}
+\noindent\textbf{Frameworks/Libraries:}
+
+\noindent\textfield{frameworks}{\textwidth}
+
+\vspace{0.3cm}
+\noindent\textbf{Tools:}
+
+\noindent\textfield{tools}{\textwidth}
+
+\vspace{0.3cm}
+\noindent\textbf{Cloud/Infrastructure:}
+
+\noindent\textfield{cloud}{\textwidth}
+
+\vspace{0.5cm}
+
+\subsection*{Repo indeling *}
+\textit{Geef hieronder een besschrijving hoe je de Repo ingedeeld wilt zien.}
+
+\noindent\textfieldmultiline{repo_indeling}{\textwidth}{3cm}
+
+\vspace{0.5cm}
+
+\subsection*{Data Classificatie *}
+\textit{Wat is de gevoeligheid van de data die je gaat gebruiken?}
+
+\vspace{0.3cm}
+\noindent\checkbox{data_openbaar} Openbaar (publiek toegankelijk)
+
+\vspace{0.2cm}
+\noindent\checkbox{data_intern} Intern (alleen HR medewerkers)
+
+\vspace{0.2cm}
+\noindent\checkbox{data_vertrouwelijk} Vertrouwelijk (beperkte toegang)
+
+\vspace{0.2cm}
+\noindent\checkbox{data_privacy} Privacygevoelig (persoonsgegevens)
+
+\vspace{0.5cm}
+
+\subsection*{Privacy en Security Overwegingen *}
+\textit{Zijn er privacy of security aspecten waar we rekening mee moeten houden?}
+
+\noindent\textfieldmultiline{privacy_security}{\textwidth}{3cm}
+
+\vspace{0.3cm}
+\noindent\textbf{Bevat het project persoonsgegevens?} 
+\checkbox{persoonsgegevens_ja} Ja \hspace{0.5cm}
+\checkbox{persoonsgegevens_nee} Nee
+
+\vspace{0.3cm}
+
+\newpage
+
+\section{Kennisdeling en Herbruikbaarheid}
+
+\subsection*{Open Source *}
+\textit{Kan dit project open source worden ontwikkeld?}
+
+\vspace{0.3cm}
+\noindent\checkbox{opensource_volledig} Ja, volledig open source
+
+\vspace{0.2cm}
+\noindent\checkbox{opensource_gedeeltelijk} Gedeeltelijk (sommige componenten)
+
+\vspace{0.2cm}
+\noindent\checkbox{opensource_nee} Nee, moet intern blijven
+
+\vspace{0.2cm}
+\noindent\checkbox{opensource_onbekend} Weet ik niet
+
+\vspace{0.3cm}
+\noindent\textbf{Toelichting:}
+
+\noindent\textfieldmultiline{opensource_toelichting}{\textwidth}{2cm}
+
+\vspace{0.5cm}
+
+\subsection*{Herbruikbaarheid}
+\textit{Kunnen andere afdelingen of projecten hiervan profiteren?}
+
+\noindent\textfieldmultiline{herbruikbaarheid}{\textwidth}{3cm}
+
+\vspace{0.5cm}
+
+\subsection*{Kennisdeling}
+\textit{Ben je bereid om kennis te delen over dit project?}
+
+\noindent\textfieldmultiline{kennisdeling}{\textwidth}{3cm}
+
+\newpage
+
+\section{Aanvullende Informatie}
+
+\subsection*{Afhankelijkheden}
+\textit{Is dit project afhankelijk van andere projecten of systemen?}
+
+\noindent\textfieldmultiline{afhankelijkheden}{\textwidth}{3cm}
+
+\vspace{0.5cm}
+
+\subsection*{Risico's}
+\textit{Wat zijn de belangrijkste risico's voor dit project?}
+
+\noindent\textfieldmultiline{risicos}{\textwidth}{3cm}
+
+\vspace{0.5cm}
+
+\subsection*{Eerdere Initiatieven}
+\textit{Zijn er eerder pogingen geweest om dit probleem op te lossen?}
+
+\noindent\textfieldmultiline{eerdere_initiatieven}{\textwidth}{3cm}
+
+\vspace{0.5cm}
+
+\subsection*{Overige Opmerkingen}
+\textit{Nog iets dat we moeten weten?}
+
+\noindent\textfieldmultiline{overige_opmerkingen}{\textwidth}{4cm}
+
+\newpage
+
+\section{Verklaring}
+
+\vspace{0.5cm}
+
+\noindent Door dit formulier in te dienen verklaar ik dat:
+
+\vspace{0.3cm}
+\noindent\checkbox{verklaring1} De verstrekte informatie naar beste weten correct is
+
+\vspace{0.2cm}
+\noindent\checkbox{verklaring2} Ik akkoord ga met het intake proces zoals beschreven in de README
+
+\vspace{0.2cm}
+\noindent\checkbox{verklaring3} Ik beschikbaar ben voor een intake gesprek
+
+\vspace{0.2cm}
+\noindent\checkbox{verklaring4} Ik eventuele aanvullende informatie zal aanleveren op verzoek
+
+\vspace{1cm}
+
+\noindent\textbf{Datum indiening:} \textfield{datum_indiening}{6cm}
+
+\vspace{0.5cm}
+
+\noindent\textbf{Naam indiener:} \textfield{naam_indiener}{10cm}
+
+\vspace{0.5cm}
+
+\noindent\textbf{Handtekening:} \textfield{handtekening}{10cm}
+
+\vspace{2cm}
+
+\section*{Hoe in te dienen}
+
+\begin{enumerate}[leftmargin=*]
+    \item Vul dit PDF formulier digitaal in
+    \item Sla het ingevulde formulier op
+    \item Maak een nieuwe Issue aan in de GitHub repository: \url{https://github.com/HR-DataLab-EAS/Intake-projecten}
+    \item Upload het ingevulde PDF formulier bij de Issue
+    \item Label de issue met \texttt{intake-nieuw}
+    \item Je ontvangt binnen 5 werkdagen een eerste reactie van het DataLab team
+\end{enumerate}
+
+\vspace{1cm}
+
+\subsection*{Vragen over dit formulier?}
+
+Neem contact op met het EAS DataLab team:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Email:} datalab@hr.nl
+    \item \textbf{Teams:} EAS DataLab channel
+\end{itemize}
+
+\vspace{1cm}
+
+\hrule
+
+\vspace{0.3cm}
+
+\noindent\textit{\small Dit formulier is onderdeel van het project intake proces van de HR-DataLab-EAS}
+
+\noindent\textit{\small Laatste update: November 2025}
+
+\end{Form}
+
+\end{document}
