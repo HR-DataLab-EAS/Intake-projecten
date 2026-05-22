@@ -367,6 +367,23 @@ def escape_latex(text: str) -> str:
     return text
 
 
+def unique_path(path: Path) -> Path:
+    """Return een niet-bestaand pad door een timestamp/counter toe te voegen als nodig.
+    Dit vermijdt overschrijven van bestaande (mogelijk read-only) bestanden.
+    """
+    if not path.exists():
+        return path
+    stem = path.stem
+    suffix = path.suffix
+    timestamp = datetime.now().strftime("%Y%m%dT%H%M%S")
+    new_path = path.parent / f"{stem}_{timestamp}{suffix}"
+    counter = 1
+    while new_path.exists():
+        new_path = path.parent / f"{stem}_{timestamp}_{counter}{suffix}"
+        counter += 1
+    return new_path
+
+
 def process_forms():
     """Hoofdfunctie: verwerk alle forms uit forms.xlsx."""
     
@@ -415,30 +432,29 @@ def process_forms():
         # Output directory voor deze persoon
         person_dir = OUTPUT_DIR / folder_name
         
-        # Verwijder bestaande directory
+        # Als directory bestaat: verander niets aan bestaande bestanden.
+        # We maken geen bestanden read-only schrijfbaar en verwijderen niets.
         if person_dir.exists():
-            print(f"   🗑️  Verwijderen bestaande map: {folder_name}/")
-            shutil.rmtree(person_dir)
-        
-        # Maak nieuwe directory
-        person_dir.mkdir(parents=True, exist_ok=True)
+            print(f"   📁 Map bestaat: {folder_name}/ — bestanden worden niet verwijderd; nieuwe bestanden krijgen unieke namen")
+        else:
+            person_dir.mkdir(parents=True, exist_ok=True)
         
         # Genereer markdown
         md_content = generate_markdown(row, naam, datum)
         
         # === Opslaan Markdown ===
-        md_path = person_dir / f"{file_base}.md"
+        md_path = unique_path(person_dir / f"{file_base}.md")
         md_path.write_text(md_content, encoding='utf-8')
         print(f"   📝 Markdown: {md_path.relative_to(PROJECT_ROOT)}")
         
         # === Opslaan HTML ===
         html_content = markdown_to_html(md_content, naam)
-        html_path = person_dir / f"{file_base}.html"
+        html_path = unique_path(person_dir / f"{file_base}.html")
         html_path.write_text(html_content, encoding='utf-8')
         print(f"   🌐 HTML: {html_path.relative_to(PROJECT_ROOT)}")
         
         # === Opslaan PDF ===
-        pdf_path = person_dir / f"{file_base}.pdf"
+        pdf_path = unique_path(person_dir / f"{file_base}.pdf")
         try:
             markdown_to_pdf(md_content, pdf_path, naam)
             print(f"   📄 PDF: {pdf_path.relative_to(PROJECT_ROOT)}")
@@ -447,7 +463,7 @@ def process_forms():
         
         # === Opslaan LaTeX ===
         latex_content = markdown_to_latex(md_content, naam)
-        latex_path = person_dir / f"{file_base}.tex"
+        latex_path = unique_path(person_dir / f"{file_base}.tex")
         latex_path.write_text(latex_content, encoding='utf-8')
         print(f"   📐 LaTeX: {latex_path.relative_to(PROJECT_ROOT)}")
         

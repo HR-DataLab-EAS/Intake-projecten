@@ -3,6 +3,7 @@
 Dit is de repository voor het Intake Projecten systeem van HR-DataLab-EAS. Hier vind je alle benodigde informatie over het project, inclusief installatie-instructies, gebruiksrichtlijnen en projectstructuur.
 
 ## Inhoudsopgave
+
 - [Intake Projecten](#intake-projecten)
   - [Inhoudsopgave](#inhoudsopgave)
   - [Beschrijving](#beschrijving)
@@ -27,20 +28,23 @@ Dit is de repository voor het Intake Projecten systeem van HR-DataLab-EAS. Hier 
   - [Mappenstructuur output](#mappenstructuur-output)
   - [LaTeX Templates](#latex-templates)
   - [Troubleshooting](#troubleshooting)
-    - [❌ "forms.xlsx niet gevonden"](#-formsxlsx-niet-gevonden)
-    - [❌ "ModuleNotFoundError: No module named 'pandas'"](#-modulenotfounderror-no-module-named-pandas)
-    - [❌ "UnicodeDecodeError" bij het lezen van Excel](#-unicodedecodeerror-bij-het-lezen-van-excel)
-    - [❌ "Kolom 'Naam' niet gevonden"](#-kolom-naam-niet-gevonden)
+    - [❌ &#34;forms.xlsx niet gevonden&#34;](#-formsxlsx-niet-gevonden)
+    - [❌ &#34;ModuleNotFoundError: No module named &#39;pandas&#39;&#34;](#-modulenotfounderror-no-module-named-pandas)
+    - [❌ &#34;UnicodeDecodeError&#34; bij het lezen van Excel](#-unicodedecodeerror-bij-het-lezen-van-excel)
+    - [❌ &#34;Kolom &#39;Naam&#39; niet gevonden&#34;](#-kolom-naam-niet-gevonden)
     - [❌ Python versie te oud](#-python-versie-te-oud)
   - [Contact](#contact)
 
 ---
+
 ßßßßßß
+
 ## Beschrijving
 
-Het **Intake Projecten systeem** is ontworpen om het intakeproces van projecten te stroomlijnen binnen de datalabs van de Hogeschool Rotterdam. 
+Het **Intake Projecten systeem** is ontworpen om het intakeproces van projecten te stroomlijnen binnen de datalabs van de Hogeschool Rotterdam.
 
 ### Wat doet dit systeem?
+
 1. **Verzamelen**: Intakeformulieren worden verzameld via Microsoft Forms
 2. **Exporteren**: De verzamelde data wordt geëxporteerd naar een Excel-bestand (`forms.xlsx`)
 3. **Converteren**: Het Python-script converteert automatisch elke intake naar meerdere formaten:
@@ -49,6 +53,7 @@ Het **Intake Projecten systeem** is ontworpen om het intakeproces van projecten 
    - 📑 **LaTeX** (.tex) - Voor professionele PDF-documenten
 
 ### Waarom dit systeem?
+
 - **Gestandaardiseerd**: Alle intakes volgen dezelfde structuur
 - **Automatisering**: Geen handmatig werk meer bij het opmaken van formulieren
 - **Meerdere formaten**: Flexibel in hoe je de intakes wilt delen of archiveren
@@ -86,14 +91,16 @@ Intake-projecten/
 
 Voordat je begint, zorg ervoor dat je het volgende hebt:
 
-| Vereiste | Versie | Opmerkingen |
-|----------|--------|-------------|
-| Python | 3.10+ | Controleer met `python --version` |
-| Git | Laatste versie | Voor versiebeheer |
-| pip | Inbegrepen bij Python | Voor package management |
+| Vereiste | Versie                | Opmerkingen                         |
+| -------- | --------------------- | ----------------------------------- |
+| Python   | 3.10+                 | Controleer met `python --version` |
+| Git      | Laatste versie        | Voor versiebeheer                   |
+| pip      | Inbegrepen bij Python | Voor package management             |
 
 ### Benodigde Python packages
+
 Zie [requirements.txt](requirements.txt) voor de volledige lijst:
+
 - `pandas` - Excel bestanden lezen
 - `openpyxl` - Excel engine voor pandas
 - `markdown` - Markdown naar HTML conversie
@@ -105,12 +112,14 @@ Zie [requirements.txt](requirements.txt) voor de volledige lijst:
 ## Installatie
 
 ### Stap 1: Repository clonen
+
 ```bash
 git clone https://github.com/HR-DataLab-EAS/Intake-projecten.git
 cd Intake-projecten
 ```
 
 ### Stap 2: Python environment aanmaken (aanbevolen)
+
 ```bash
 # Maak een virtuele omgeving aan
 python -m venv venv
@@ -144,20 +153,20 @@ Voor het excel bestand `forms.xlsx`, zorg ervoor dat deze in de root van het pro
 
 ## Gebruik
 
-### Stap 1: Excel bestand voorbereiden 
+### Stap 1: Excel bestand voorbereiden
 
 Voordat je het script kan uitvoeren zijn er een aantal dingen die je moet instellen om ervoor te zorgen dat alle gegevens correct in het `forms.xlsx` bestand komen te staan. Hieronder zijn de stappen die je moet volgen:
+
 1. **Maak een Microsoft Form aan** met de benodigde velden voor de intake (bijv. Naam, Datum, Emailadres, Project naam, Projectbeschrijving, etc.).
 
-
-Deze automatie voegt zodra er een nieuwe forum is ingevuld een rij aan het Excel bestand toe. 
+Deze automatie voegt zodra er een nieuwe forum is ingevuld een rij aan het Excel bestand toe.
 
 **Voorbeeld van forms.xlsx structuur:**
 
-| Naam | Datum | Emailadres | Project naam | Projectbeschrijving |
-|------|-------|------------|--------------|---------------------|
-| Jan | 2026-01-15 | jan@hr.nl | Dashboard Analytics | Een dashboard voor... |
-| Piet | 2026-01-20 | piet@hr.nl | AI Chatbot | Een chatbot die... |
+| Naam | Datum      | Emailadres | Project naam        | Projectbeschrijving   |
+| ---- | ---------- | ---------- | ------------------- | --------------------- |
+| Jan  | 2026-01-15 | jan@hr.nl  | Dashboard Analytics | Een dashboard voor... |
+| Piet | 2026-01-20 | piet@hr.nl | AI Chatbot          | Een chatbot die...    |
 
 ### Stap 2: Formulieren genereren
 
@@ -167,7 +176,19 @@ Voer het generatie-script uit vanuit de project root:
 python src/generate_intake_forms.py
 ```
 
+**Hoe het werkt:**
+
+- Het script leest `forms.xlsx` in de projectroot.
+- Voor elke rij met een naam maakt het een map `docs/output/Intake_{naam}/`.
+- In die map genereert het vier bestanden:
+  - `.md` (Markdown)
+  - `.html` (GitHub-stijl HTML)
+  - `.pdf` (via `markdown-pdf`)
+  - `.tex` (LaTeX)
+- Als de map of bestanden al bestaan, worden bestaande bestanden niet verwijderd; nieuwe bestanden krijgen een unieke naam met timestamp.
+
 **Verwachte output:**
+
 ```
 📖 Lezen van forms.xlsx...
    Gevonden kolommen: ['Naam', 'Datum', 'Emailadres', ...]
@@ -197,13 +218,65 @@ explorer docs/output/  # Windows
 
 ---
 
+## Veilige verwijdering van gegenereerde output (2FA)
+
+Voor het veilig (en bewust) verwijderen van gegenereerde output is er een script met two-factor authenticatie:
+
+- Script: `src/delete_outputs_2fa.py`
+- Werkt met: een verwijder-wachtwoord + een TOTP-code uit een authenticator-app (bijv. Google Authenticator).
+
+Setup en gebruik:
+
+1. Installeer dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+2. Start de setup (interactief) en genereer secret:
+
+```bash
+python src/delete_outputs_2fa.py --dry-run
+```
+
+De eerste run maakt een `secrets/` map en toont een TOTP-secret dat je in een authenticator-app kunt toevoegen.
+
+3. Dry-run tonen wat verwijderd zou worden:
+
+```bash
+python src/delete_outputs_2fa.py --dry-run
+```
+
+4. Echt verwijderen (na setup):
+
+```bash
+python src/delete_outputs_2fa.py            # interactiv: wachtwoord + TOTP + bevestiging
+python src/delete_outputs_2fa --path docs/output --yes   # zonder extra prompt (gebruik met zorg)
+```
+
+Veiligheidsnota:
+
+- Secrets worden opgeslagen in `secrets/` (beperkte bestandspermissies worden geprobeerd).
+- Dit script vereist expliciete bevestiging en de combinatie van iets dat je weet (wachtwoord) en iets dat je hebt (TOTP), zodat verwijdering niet per ongeluk of door één gecompromitteerde factor kan plaatsvinden.
+
+**Hoe de 2FA-verwijdering werkt:**
+
+- Bij eerste gebruik maakt het script een `secrets/` map met een wachtwoord-hash en een TOTP-secret.
+- Je voegt dat TOTP-secret toe aan een authenticator-app.
+- Voor verwijdering voer je eerst het wachtwoord in.
+- Daarna voer je de 6-cijferige TOTP-code in uit je authenticator.
+- Het script toont welke items in de doelmap staan en vraagt je om expliciete bevestiging.
+- Pas als je bevestigt, worden de geselecteerde bestanden of mappen permanent verwijderd.
+
+---
+
 ## Output formaten
 
-| Formaat | Extensie | Geschikt voor |
-|---------|----------|---------------|
-| **Markdown** | `.md` | GitHub weergave, documentatie, versiebeheer |
-| **HTML** | `.html` | Direct openen in browser, presentaties |
-| **LaTeX** | `.tex` | Professionele PDFs (compileren met pdflatex) |
+| Formaat            | Extensie  | Geschikt voor                                |
+| ------------------ | --------- | -------------------------------------------- |
+| **Markdown** | `.md`   | GitHub weergave, documentatie, versiebeheer  |
+| **HTML**     | `.html` | Direct openen in browser, presentaties       |
+| **LaTeX**    | `.tex`  | Professionele PDFs (compileren met pdflatex) |
 
 ### HTML naar PDF converteren
 
@@ -249,23 +322,28 @@ Zie [docs/intake_forms/README.md](docs/intake_forms/README.md) voor meer informa
 ## Troubleshooting
 
 ### ❌ "forms.xlsx niet gevonden"
+
 - Zorg dat `forms.xlsx` in de **root** van het project staat (naast `README.md`)
 - Controleer de bestandsnaam (let op hoofdletters)
 
 ### ❌ "ModuleNotFoundError: No module named 'pandas'"
+
 ```bash
 pip install -r requirements.txt
 ```
 
 ### ❌ "UnicodeDecodeError" bij het lezen van Excel
+
 - Sla het Excel bestand op met UTF-8 encoding
 - Of open en sla opnieuw op in een recente versie van Excel
 
 ### ❌ "Kolom 'Naam' niet gevonden"
+
 - Het script zoekt naar `naam` of `name` (case-insensitive)
 - Controleer of de kolomnamen in je Excel correct zijn
 
 ### ❌ Python versie te oud
+
 ```bash
 # Controleer je Python versie
 python --version

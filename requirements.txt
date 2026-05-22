@@ -19,3 +19,6 @@ markdown-pdf>=1.0.0
 
 # Voor executable building (optioneel)
 pyinstaller>=6.0.0
+
+# Two-factor auth voor veilige verwijdering
+pyotp>=2.8.0
